@@ -1,7 +1,6 @@
 import 'dart:math';
-import 'package:flutter/cupertino.dart';
+import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:share/share.dart';
 
 class sebhaScreen extends StatefulWidget {
@@ -11,7 +10,7 @@ class sebhaScreen extends StatefulWidget {
 
 class _sebhaScreenState extends State<sebhaScreen> {
   String name = "أحمد سلامة";
-  int total_count = 100;
+  int total_count = 0;
   int count = 0;
   int tasbe7 = 0;
   Map tasbe7at = {
@@ -45,6 +44,7 @@ class _sebhaScreenState extends State<sebhaScreen> {
       body: Column(
         children: [
           Expanded(
+            flex: 2,
             child: Padding(
               padding: const EdgeInsets.all(20.0),
               child: Row(
@@ -120,7 +120,7 @@ class _sebhaScreenState extends State<sebhaScreen> {
                               // textAlign: TextAlign.center,
                               style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: 17 - log(total_count),
+                                  fontSize: 17 - log((total_count==0)?1:total_count),
                                   fontFamily: "Inter"),
                             ),
                           ),
@@ -133,11 +133,45 @@ class _sebhaScreenState extends State<sebhaScreen> {
             ),
           ),
           Expanded(
-            flex: 5,
+            flex: 4,
+            child: Swiper(
+              onIndexChanged: (index){
+                count = 0;
+                tasbe7 = index;
+              },
+              itemBuilder: (BuildContext context,int index){
+                return Container(
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.symmetric(horizontal: 50),
+                  decoration: BoxDecoration(
+                      color: Color(0xFF007979),
+                      borderRadius: BorderRadius.circular(15)
+                  ),
+                  child: Text(
+                    tasbe7at.keys.elementAt(index),
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontFamily: "Inter"),
+
+                  ),
+                );
+              },
+              viewportFraction: 150,
+              itemCount: tasbe7at.length,
+              layout: SwiperLayout.TINDER,
+              itemWidth: double.infinity,
+              itemHeight: double.infinity,
+            ),
+          ),
+          Expanded(
+            flex: 4,
             child: InkWell(
               onTap: () {
                 if (tasbe7at.values.elementAt(tasbe7) - 1 > count) {
                   count++;
+                  total_count++;
                 } else {
                   count = 0;
                   if (tasbe7at.length - 1 > tasbe7) {
@@ -171,6 +205,7 @@ class _sebhaScreenState extends State<sebhaScreen> {
             ),
           ),
           Expanded(
+            flex: 2,
               child: Padding(
             padding: const EdgeInsets.all(30.0),
             child: Row(

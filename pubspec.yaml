@@ -39,8 +39,8 @@ dependencies:
   http: ^1.2.1
   provider: ^6.1.2
   jhijri: ^1.0.0
-  #holiday_event_api: ^1.0.2
   bulleted_list: ^0.0.1+0.1a
+  card_swiper: ^3.0.1
 
 dev_dependencies:
   flutter_test:

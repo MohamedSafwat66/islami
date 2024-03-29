@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:islami/screens/date.dart';
+import 'package:islami/screens/location.dart';
+import 'package:islami/screens/search.dart';
 import 'package:islami/screens/sebha.dart';
 import 'package:provider/provider.dart';
 import 'package:islami/provider/provider.dart';
