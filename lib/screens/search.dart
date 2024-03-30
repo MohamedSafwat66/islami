@@ -1,10 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:islami/lists/peopleListView.dart';
+import 'package:islami/lists/postsListView.dart';
+import 'package:islami/lists/qoranListView.dart';
+import 'package:islami/lists/reels.dart';
+import 'package:islami/lists/videosListView.dart';
 import 'package:provider/provider.dart';
 import 'package:islami/lists/listView.dart';
 import 'package:islami/provider/provider.dart';
-class searchscreen extends StatelessWidget {
-  const searchscreen({Key? key}) : super(key: key);
+import 'package:video_player/video_player.dart';
 
+class searchscreen extends StatelessWidget {
+  searchscreen({Key? key}) : super(key: key);
+  Map qoran= {
+  "هُوَ الَّذِي يُصَلِّي عَلَيْكُمْ وَمَلَائِكَتُهُ لِيُخْرِجَكُم مِّنَ الظُّلُمَاتِ إِلَى النُّورِ وَكَانَ بِالْمُؤْمِنِينَ رَحِيمًا......":["سورة البقرة", "الآية رقم 154"],
+  "هُوَ الَّذِي يُصَلِّي عَلَيْكُمْ وَمَلَائِكَتُهُ لِيُخْرِجَكُم.....":["سورة النور", "الآية رقم 154"]
+  };
+ Map hades = {
+  "من كان يؤمن بالله واليوم الآخر ،فليقل خيرا أو ليصمت ، ومن كان يؤمن بالله واليوم الآخر ، فليكرم جاره ، ومن كان يؤمن بالله واليوم الآخر ، فليكرم ضيفه":["صحيح البخاري", "كتاب الإيمان, باب دعاؤكم إيمانكم"],
+   "من كان يؤمن بالله واليوم الآخر ،فليقل خيرا أو ليصمت ، ومن كان يؤمن بالله واليوم الآخر ، فليكرم جاره ، ومن كان يؤمن بالله واليوم الآخر ، فليكرم ضيفه":["صحيح البخاري", "كتاب الإيمان, باب دعاؤكم إيمانكم"],
+  };
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -72,42 +86,42 @@ class searchscreen extends StatelessWidget {
                 children: [
                   Provider.of<providerscreen>(context).loadingSearch==true?
                   const Center(child:  CircularProgressIndicator(),)
-                      :Expanded(child: listview(data: Provider.of<providerscreen>(context).searchData))
+                      :Expanded(child: peopleListview())
                 ],
               ),
               Column(
                 children: [
                   Provider.of<providerscreen>(context).loadingSearch==true?
                   const Center(child:  CircularProgressIndicator(),)
-                      :Expanded(child: listview(data: Provider.of<providerscreen>(context).searchData))
+                      :Expanded(child: postsListview())
                 ],
               ),
               Column(
                 children: [
                   Provider.of<providerscreen>(context).loadingSearch==true?
                   const Center(child:  CircularProgressIndicator(),)
-                      :Expanded(child: listview(data: Provider.of<providerscreen>(context).searchData))
+                      :Expanded(child: videosListview())
                 ],
               ),
               Column(
                 children: [
                   Provider.of<providerscreen>(context).loadingSearch==true?
                   const Center(child:  CircularProgressIndicator(),)
-                      :Expanded(child: listview(data: Provider.of<providerscreen>(context).searchData))
+                      :Expanded(child: reels())
                 ],
               ),
               Column(
                 children: [
                   Provider.of<providerscreen>(context).loadingSearch==true?
                   const Center(child:  CircularProgressIndicator(),)
-                      :Expanded(child: listview(data: Provider.of<providerscreen>(context).searchData))
+                      :Expanded(child: qoranListview(data: qoran,))
                 ],
               ),
               Column(
                 children: [
                   Provider.of<providerscreen>(context).loadingSearch==true?
                   const Center(child:  CircularProgressIndicator(),)
-                      :Expanded(child: listview(data: Provider.of<providerscreen>(context).searchData))
+                      :Expanded(child: qoranListview(data: hades,))
                 ],
               ),
               

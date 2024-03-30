@@ -40,7 +40,9 @@ dependencies:
   provider: ^6.1.2
   jhijri: ^1.0.0
   bulleted_list: ^0.0.1+0.1a
-  card_swiper: ^3.0.1
+  card_swiper: ^2.0.4
+  video_player: ^2.8.3
+  reels_viewer: ^1.0.0+3
 
 dev_dependencies:
   flutter_test:
